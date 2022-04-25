@@ -14,11 +14,10 @@ class Todo(db.Model):
 
 db.create_all()
 
-@app.get('/')
-def hello_world():
-
-  todo_list = db.session.query(Todo).all()
-  return render_template("index.html", todo_list=todo_list)
+@app.get("/")
+def home():
+    todo_list = db.session.query(Todo).all()
+    return render_template("index.html", todo_list=todo_list)
 
 app.run(host='0.0.0.0', port=8080)
 
